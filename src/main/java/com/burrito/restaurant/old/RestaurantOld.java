@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /**
  * The Restaurant class tracks the state of food prices, all placed orders, and remained fries on the food stack.
  */
-public class Restaurant {
+public class RestaurantOld {
 	private String name;
     // keep food prices
     private static final HashMap<String, Double> priceMap = new HashMap<String, Double>();
@@ -16,7 +16,7 @@ public class Restaurant {
     private static final LinkedList<Order> allOrders = new LinkedList<Order>();
     private static final int mealDiscount = 3;
     
-    public Restaurant(String name) {
+    public RestaurantOld(String name) {
     	priceMap.put("Burrito", 7.0);
 		priceMap.put("Fries", 4.0);
 		priceMap.put("Soda", 2.5);
@@ -57,7 +57,7 @@ public class Restaurant {
      */
 	public boolean updateRemainingServes(Order order) {
 		HashMap<String, Integer> cookables = order.mapToCookables();
-		Fries friesToCook = new Fries(Restaurant.getPrice("Fries"), cookables.get("Fries"));
+		Fries friesToCook = new Fries(RestaurantOld.getPrice("Fries"), cookables.get("Fries"));
 		int oldRemained = this.remainedFries;
 		this.remainedFries = friesToCook.getActualQuantityCooked(this) + oldRemained - friesToCook.getQuantity();
 		if (this.remainedFries != oldRemained) {
