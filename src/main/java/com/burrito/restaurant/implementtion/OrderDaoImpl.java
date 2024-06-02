@@ -1,5 +1,7 @@
-package com.burrito.restaurant.dao;
+package com.burrito.restaurant.implementtion;
 
+import com.burrito.restaurant.dao.Database;
+import com.burrito.restaurant.dao.OrderDao;
 import com.burrito.restaurant.model.*;
 
 import java.sql.*;
@@ -14,7 +16,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public void setup() throws SQLException {
-        try (Connection connection = Database.getConnection();
+        try (Connection connection = com.burrito.restaurant.dao.Database.getConnection();
              Statement stmt = connection.createStatement()) {
             String createOrderTableSql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
                     "order_id SERIAL PRIMARY KEY)";
@@ -34,7 +36,7 @@ public class OrderDaoImpl implements OrderDao {
     public Order getOrder(int orderId) throws SQLException {
         String sql = "SELECT * FROM " + ITEM_TABLE_NAME + " WHERE order_id = ?";
         Order order = new Order();
-        try (Connection connection = Database.getConnection();
+        try (Connection connection = com.burrito.restaurant.dao.Database.getConnection();
              PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, orderId);
 
@@ -72,7 +74,7 @@ public class OrderDaoImpl implements OrderDao {
     public void addOrder(Order order) throws SQLException {
         String insertOrderSql = "INSERT INTO " + TABLE_NAME + " DEFAULT VALUES";
         String insertItemSql = "INSERT INTO " + ITEM_TABLE_NAME + " (order_id, unit_price, quantity, type) VALUES (?, ?, ?, ?)";
-        try (Connection connection = Database.getConnection();
+        try (Connection connection = com.burrito.restaurant.dao.Database.getConnection();
              PreparedStatement orderStmt = connection.prepareStatement(insertOrderSql, Statement.RETURN_GENERATED_KEYS);
              PreparedStatement itemStmt = connection.prepareStatement(insertItemSql)) {
             orderStmt.executeUpdate();
@@ -96,7 +98,7 @@ public class OrderDaoImpl implements OrderDao {
     public void updateOrder(int orderId, Order updatedOrder) throws SQLException {
         // Delete existing items for this order
         String deleteItemsSql = "DELETE FROM " + ITEM_TABLE_NAME + " WHERE order_id = ?";
-        try (Connection connection = Database.getConnection();
+        try (Connection connection = com.burrito.restaurant.dao.Database.getConnection();
              PreparedStatement deleteStmt = connection.prepareStatement(deleteItemsSql)) {
             deleteStmt.setInt(1, orderId);
             deleteStmt.executeUpdate();
@@ -104,7 +106,7 @@ public class OrderDaoImpl implements OrderDao {
 
         // Add updated items
         String insertItemSql = "INSERT INTO " + ITEM_TABLE_NAME + " (order_id, unit_price, quantity, type) VALUES (?, ?, ?, ?)";
-        try (Connection connection = Database.getConnection();
+        try (Connection connection = com.burrito.restaurant.dao.Database.getConnection();
              PreparedStatement insertStmt = connection.prepareStatement(insertItemSql)) {
             for (FoodItem item : updatedOrder.getItems()) {
                 insertStmt.setInt(1, orderId);

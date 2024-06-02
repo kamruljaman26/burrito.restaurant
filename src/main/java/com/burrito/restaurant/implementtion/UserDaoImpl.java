@@ -1,6 +1,8 @@
-package com.burrito.restaurant.dao;
+package com.burrito.restaurant.implementtion;
 
 
+import com.burrito.restaurant.dao.Database;
+import com.burrito.restaurant.dao.UserDao;
 import com.burrito.restaurant.model.User;
 
 import java.sql.*;
@@ -14,7 +16,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void setup() throws SQLException {
 		try (Connection connection = Database.getConnection();
-			 Statement stmt = connection.createStatement();) {
+             Statement stmt = connection.createStatement();) {
 			String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
 					"username VARCHAR(10) NOT NULL," +
 					"password VARCHAR(8) NOT NULL," +

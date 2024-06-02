@@ -1,5 +1,7 @@
-package com.burrito.restaurant.dao;
+package com.burrito.restaurant.implementtion;
 
+import com.burrito.restaurant.dao.Database;
+import com.burrito.restaurant.dao.RestaurantDao;
 import com.burrito.restaurant.model.Restaurant;
 
 import java.sql.*;
