@@ -1,11 +1,10 @@
-package com.burrito.restaurant.implementtion;
+package com.burrito.restaurant.implementation;
 
 import com.burrito.restaurant.dao.Database;
 import com.burrito.restaurant.dao.RestaurantDao;
 import com.burrito.restaurant.model.Restaurant;
 
 import java.sql.*;
-import java.util.HashMap;
 
 public class RestaurantDaoImpl implements RestaurantDao {
     private final String TABLE_NAME = "restaurants";

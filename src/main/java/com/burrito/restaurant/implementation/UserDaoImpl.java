@@ -1,4 +1,4 @@
-package com.burrito.restaurant.implementtion;
+package com.burrito.restaurant.implementation;
 
 
 import com.burrito.restaurant.dao.Database;

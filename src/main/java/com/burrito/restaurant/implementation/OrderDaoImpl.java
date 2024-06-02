@@ -1,11 +1,10 @@
-package com.burrito.restaurant.implementtion;
+package com.burrito.restaurant.implementation;
 
 import com.burrito.restaurant.dao.Database;
 import com.burrito.restaurant.dao.OrderDao;
 import com.burrito.restaurant.model.*;
 
 import java.sql.*;
-import java.util.LinkedList;
 
 public class OrderDaoImpl implements OrderDao {
     private final String TABLE_NAME = "orders";
