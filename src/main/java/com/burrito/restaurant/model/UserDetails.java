@@ -1,22 +1,19 @@
 package com.burrito.restaurant.model;
 
-import com.burrito.restaurant.dao.UserDao;
-import com.burrito.restaurant.implementation.UserDaoImpl;
+import com.burrito.restaurant.db.UserDao;
+import com.burrito.restaurant.db.implementation.UserDaoImpl;
 
 import java.sql.SQLException;
 
-public class Model {
+public class UserDetails {
 
 	private UserDao userDao;
 	private User currentUser; 
 	
-	public Model() {
+	public UserDetails() {
 		userDao = new UserDaoImpl();
 	}
-	
-	public void setup() throws SQLException {
-		userDao.setup();
-	}
+
 	public UserDao getUserDao() {
 		return userDao;
 	}

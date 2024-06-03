@@ -1,10 +1,10 @@
-package com.burrito.restaurant.dao;
+package com.burrito.restaurant.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Database {
+public class DbConnection {
 	// URL pattern for database
 	private static final String DB_URL = "jdbc:sqlite:application.db";
 

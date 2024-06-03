@@ -1,11 +1,10 @@
-package com.burrito.restaurant.dao;
+package com.burrito.restaurant.db;
 
 import com.burrito.restaurant.model.Order;
 
 import java.sql.SQLException;
 
 public interface OrderDao {
-    void setup() throws SQLException;
 
     Order getOrder(int orderId) throws SQLException;
 

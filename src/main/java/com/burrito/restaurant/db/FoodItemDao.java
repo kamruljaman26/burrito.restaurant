@@ -1,4 +1,4 @@
-package com.burrito.restaurant.dao;
+package com.burrito.restaurant.db;
 
 import com.burrito.restaurant.model.FoodItem;
 
@@ -8,7 +8,6 @@ import java.sql.SQLException;
  * Data access object interface for FoodItem.
  */
 public interface FoodItemDao {
-    void setup() throws SQLException;
 
     FoodItem getFoodItem(int itemId) throws SQLException;
 
